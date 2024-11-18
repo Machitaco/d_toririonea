@@ -1,6 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Popup from "./Popup.js";
 
+function App() {
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p className="Title">Dトリ</p>
+        <Popup />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+/* 2024/11/18 チュートリアル時のApp()
 function App() {
   return (
     <div className="App">
@@ -21,5 +43,4 @@ function App() {
     </div>
   );
 }
-
-export default App;
+*/

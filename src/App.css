@@ -14,7 +14,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url("./wallpaper_202209_thumb.jpg");
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,6 +27,13 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Title {
+  background-color: white;
+  color: black;
+  font-size: xx-large;
+  margin: 50px;
 }
 
 @keyframes App-logo-spin {
