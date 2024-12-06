@@ -45,7 +45,7 @@
   }
 }
 
-a.active {
+.button-link {
   display: inline-black;
   padding: 10px 20px;
   background-color: #ffffff;

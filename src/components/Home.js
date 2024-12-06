@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 import "../App.css";
 
 function Home() {
@@ -7,9 +7,9 @@ function Home() {
     <div className="App">
       <header className="App-header">
         <p className="Title">Dトリ</p>
-        <NavLink to="/game" end>
+        <Link to="/game" className="button-link">
           GAME START
-        </NavLink>
+        </Link>
         <Popup />
       </header>
     </div>
