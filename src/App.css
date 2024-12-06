@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-image: url("./wallpaper_202209_thumb.jpg");
+  background-image: url("./data/images/wallpaper_202209_thumb.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -43,4 +43,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+a.active {
+  display: inline-black;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: black;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
 }
