@@ -1,22 +1,16 @@
 import "./App.css";
-import Popup from "./Popup.js";
+import Home from "./components/Home.js";
+import Game from "./Game.js";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
   return (
-    <div>
-      <Home />
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p className="Title">Dトリ</p>
-        <Popup />
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
