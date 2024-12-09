@@ -9,7 +9,7 @@
         "アーント・ペグズ・ヴィレッジストア横"
       ],
       "ans": 0,
-      "image": "none",
+      "image": "./image/0.jpg",
       "hint": true
     },
     {
@@ -29,7 +29,7 @@
         "オープンセサミ横"
       ],
       "ans": 2,
-      "image": "",
+      "image": "./image/2.jpg",
       "hint": false
     }
   ]

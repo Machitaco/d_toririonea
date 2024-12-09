@@ -34,18 +34,34 @@ image=none, hint=false 画像は非表示。選択肢ごとの回答を表示。
 import quizSet from "./data/quizSet.json";
 import "./App.css";
 import QuizTitle from "./components/QuizTitle.js";
+import QuizText from "./components/QuizText.js";
+import QuizHintImage from "./components/QuizHintImage.js";
+import QuizUseImage from "./components/QuizUseImage.js";
 
 function Game() {
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  const questionId = getRandomInt(0, 3);
-  const selectData = quizSet.data.find((data) => data.id === questionId);
+  const selectId = getRandomInt(0, 3);
+  const selectData = quizSet.data.find((data) => data.id === selectId);
+
+  let selectComp;
+
+  if (selectData.image === "none" && selectData.hint === false) {
+    selectComp = <QuizText quizData={selectData} />;
+  } else if (selectData.image !== "none" && selectData.hint === false) {
+    selectComp = <QuizUseImage quizData={selectData} />;
+  } else if (selectData.image !== "none" && selectData.hint === true) {
+    selectComp = <QuizHintImage quizData={selectData} />;
+  } else {
+    selectComp = <p>error.</p>;
+  }
 
   return (
     <>
       <QuizTitle quizData={selectData} />
+      {selectComp}
     </>
   );
 }
