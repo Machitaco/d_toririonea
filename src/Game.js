@@ -1,5 +1,5 @@
 /*
-questionData.jsのデータ形式について
+quizSet.jsのデータ形式について
 {
   "id": 問題番号。問題抽出の際に用いる。
   "question": 問題文。
@@ -31,8 +31,23 @@ image=none, hint=false 画像は非表示。選択肢ごとの回答を表示。
       "hint": 
 */
 
+import quizSet from "./data/quizSet.json";
+import "./App.css";
+import QuizTitle from "./components/QuizTitle.js";
+
 function Game() {
-  return <p>Hello Game</p>;
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  const questionId = getRandomInt(0, 3);
+  const selectData = quizSet.data.find((data) => data.id === questionId);
+
+  return (
+    <>
+      <QuizTitle quizData={selectData} />
+    </>
+  );
 }
 
 export default Game;

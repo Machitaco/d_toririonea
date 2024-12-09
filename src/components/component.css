@@ -8,3 +8,8 @@
   padding: 20px;
   box-shadow: 0 0 10px aliceblue(0, 0, 0, 0.2);
 }
+
+.quizTitle {
+  background-color: azure;
+  color: black;
+}
