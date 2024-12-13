@@ -1,6 +1,6 @@
 .popupButton {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: aliceblue;
@@ -10,6 +10,38 @@
 }
 
 .quizTitle {
+  position: fixed;
+  padding: 0 30%;
   background-color: azure;
   color: black;
+}
+
+.quizText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 80vh;
+  color: black;
+}
+
+.quizUseImage {
+  display: flex;
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 100vh; /* 親要素が画面全体の高さの場合 */
+}
+
+.quizHintImage {
+  display: flex;
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+  height: 100vh; /* 親要素が画面全体の高さの場合 */
+}
+
+.PopupTriggerButton {
+  display: flex; /* Flexboxを使用 */
+  justify-content: center; /* 中央寄せ */
+  margin-top: 10px; /* 選択肢とボタンの間のスペース */
+  padding: 10px 20px; /* ボタンのパディング */
 }

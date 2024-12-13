@@ -1,9 +1,14 @@
+import "./component.css";
+
 function QuizUseImage({ quizData }) {
   return (
-    <>
-      <p>この問題は画像常時表示だよん。</p>
-      {quizData.id}
-    </>
+    <div className="quizUseImage">
+      <img
+        src={quizData.image}
+        alt={quizData.alt}
+        style={{ width: "auto", height: "250px" }}
+      />
+    </div>
   );
 }
 

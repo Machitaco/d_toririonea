@@ -4,7 +4,7 @@ function QuizTitle({ quizData }) {
   return (
     <>
       <div className="quizTitle">
-        <h1>{quizData.question}</h1>
+        <p>{quizData.question}</p>
       </div>
     </>
   );
