@@ -37,6 +37,7 @@ import QuizTitle from "./components/QuizTitle.js";
 import QuizText from "./components/QuizText.js";
 import QuizHintImage from "./components/QuizHintImage.js";
 import QuizUseImage from "./components/QuizUseImage.js";
+import QuizButton from "./components/QuizButton.js";
 
 function Game() {
   function getRandomInt(min, max) {
@@ -62,6 +63,7 @@ function Game() {
     <>
       <QuizTitle quizData={selectData} />
       {selectComp}
+      <QuizButton quizData={selectData} />
     </>
   );
 }

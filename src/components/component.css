@@ -3,7 +3,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: aliceblue;
+  background-color: lightgoldenrodyellow;
   color: black;
   padding: 20px;
   box-shadow: 0 0 10px aliceblue(0, 0, 0, 0.2);
@@ -44,4 +44,11 @@
   justify-content: center; /* 中央寄せ */
   margin-top: 10px; /* 選択肢とボタンの間のスペース */
   padding: 10px 20px; /* ボタンのパディング */
+}
+
+.ansButton {
+  display: flex;
+  justify-content: center;
+  background-color: burlywood;
+  padding: 10px 20px;
 }
