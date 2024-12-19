@@ -54,3 +54,14 @@
   border-radius: 4px;
   text-align: center;
 }
+
+.answerPop {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgoldenrodyellow;
+  color: black;
+  padding: 20px;
+  box-shadow: 0 0 10px aliceblue(0, 0, 0, 0.2);
+}

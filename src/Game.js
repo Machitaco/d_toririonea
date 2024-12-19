@@ -32,6 +32,7 @@ image=none, hint=false 画像は非表示。選択肢ごとの回答を表示。
 */
 
 import quizSet from "./data/quizSet.json";
+import React, { useState } from "react";
 import "./App.css";
 import QuizTitle from "./components/QuizTitle.js";
 import QuizText from "./components/QuizText.js";
@@ -44,11 +45,19 @@ function Game() {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  const selectId = getRandomInt(0, 3);
+  const [selectId, setSelectId] = useState(getRandomInt(0, 3));
+  const [score, setScore] = useState(100);
+  const [message, setMessage] = useState(null);
+
+  const [isPopUpVisible, setPopUpVisible] = useState(false);
+  const triggerPopup = () => {
+    setPopUpVisible(!isPopUpVisible);
+  };
+
   const selectData = quizSet.data.find((data) => data.id === selectId);
 
-  let selectComp;
-
+  // コンポーネント分岐
+  let selectComp = null;
   if (selectData.image === "none" && selectData.hint === false) {
     selectComp = <QuizText quizData={selectData} />;
   } else if (selectData.image !== "none" && selectData.hint === false) {
@@ -59,11 +68,51 @@ function Game() {
     selectComp = <p>error.</p>;
   }
 
+  function handleAnswer(selectedAns) {
+    triggerPopup();
+    console.log(selectData.ans);
+    console.log(selectedAns);
+    //成否判定、スコア加算
+    if (selectData.ans === selectedAns) {
+      setScore(score + 100);
+      setMessage(<p>正解!</p>);
+    } else {
+      setScore(score - 50);
+      setMessage(<p>不正解...</p>);
+    }
+  }
+
+  function nextQuestion() {
+    triggerPopup();
+    //次の問題に進む処理
+    let newId;
+    do {
+      newId = getRandomInt(0, 3);
+    } while (newId === selectId); // 同じ問題を出題しない
+    setSelectId(newId);
+    setMessage(null);
+  }
+
   return (
     <>
-      <QuizTitle quizData={selectData} />
-      {selectComp}
-      <QuizButton quizData={selectData} />
+      {selectData ? (
+        <>
+          <QuizTitle quizData={selectData} />
+          {selectComp}
+          <p>score : {score}</p>
+          <QuizButton quizData={selectData} onAnswerSelect={handleAnswer} />
+
+          {isPopUpVisible && (
+            <div className="answerPop">
+              {/* ポップアップの中身 */}
+              {message}
+              <button onClick={nextQuestion}>次の問題へ</button>
+            </div>
+          )}
+        </>
+      ) : (
+        <p>loading...</p>
+      )}
     </>
   );
 }
