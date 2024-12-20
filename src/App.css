@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-image: url("./data/images/wallpaper_202209_thumb.jpg");
+  background-image: url("./wallpaper_202209_thumb.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;

@@ -31,7 +31,7 @@ image=none, hint=false 画像は非表示。選択肢ごとの回答を表示。
       "hint": 
 */
 
-import quizSet from "./data/quizSet.json";
+import quizSet from "./quizSet.json";
 import React, { useState } from "react";
 import "./App.css";
 import QuizTitle from "./components/QuizTitle.js";
