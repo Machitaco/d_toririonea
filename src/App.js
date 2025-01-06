@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./components/Home.js";
 import Game from "./Game.js";
+import Result from "./Result.js";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<Game />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );

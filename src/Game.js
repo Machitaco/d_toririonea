@@ -33,6 +33,7 @@ image=none, hint=false 画像は非表示。選択肢ごとの回答を表示。
 
 import quizSet from "./quizSet.json";
 import React, { useState } from "react";
+import { Link } from "react-router";
 import "./App.css";
 import QuizTitle from "./components/QuizTitle.js";
 import QuizText from "./components/QuizText.js";
@@ -48,6 +49,7 @@ function Game() {
   const [selectId, setSelectId] = useState(getRandomInt(0, 3));
   const [score, setScore] = useState(100);
   const [message, setMessage] = useState(null);
+  const [life, setLife] = useState(3);
 
   const [isPopUpVisible, setPopUpVisible] = useState(false);
   const triggerPopup = () => {
@@ -78,13 +80,24 @@ function Game() {
       setMessage(<p>正解!</p>);
     } else {
       setScore(score - 50);
+      setLife(life - 1);
       setMessage(<p>不正解...</p>);
+      if (life === 1) {
+        setMessage(
+          <>
+            <p>不正解。lifeは0です。</p>
+            <Link to="/result">結果発表へ</Link>
+            <p>閉じるを押さないで...</p>
+          </>
+        );
+      }
     }
   }
 
   function nextQuestion() {
     triggerPopup();
     //次の問題に進む処理
+
     let newId;
     do {
       newId = getRandomInt(0, 3);
@@ -100,6 +113,7 @@ function Game() {
           <QuizTitle quizData={selectData} />
           {selectComp}
           <p>score : {score}</p>
+          <p>life : {life}</p>
           <QuizButton quizData={selectData} onAnswerSelect={handleAnswer} />
 
           {isPopUpVisible && (
