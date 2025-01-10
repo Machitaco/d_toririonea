@@ -50,13 +50,9 @@ function Game() {
   const [score, setScore] = useState(100);
   const [message, setMessage] = useState(null);
   const [life, setLife] = useState(3);
-
   const [isPopUpVisible, setPopUpVisible] = useState(false);
-  const triggerPopup = () => {
-    setPopUpVisible(!isPopUpVisible);
-  };
 
-  const selectData = quizSet.data.find((data) => data.id === selectId);
+  let selectData = quizSet.data.find((data) => data.id === selectId);
 
   // コンポーネント分岐
   let selectComp = null;
@@ -70,24 +66,33 @@ function Game() {
     selectComp = <p>error.</p>;
   }
 
-  function handleAnswer(selectedAns) {
-    triggerPopup();
-    console.log(selectData.ans);
-    console.log(selectedAns);
+  function HandleAnswer(selectedAns) {
+    setPopUpVisible(!isPopUpVisible);
+
     //成否判定、スコア加算
     if (selectData.ans === selectedAns) {
       setScore(score + 100);
-      setMessage(<p>正解!</p>);
+      setMessage(
+        <>
+          <p>正解!</p>
+          <button onClick={nextQuestion}>次の問題へ</button>
+        </>
+      );
     } else {
       setScore(score - 50);
       setLife(life - 1);
-      setMessage(<p>不正解...</p>);
+      setMessage(
+        <>
+          <p>不正解...</p>
+          <button onClick={nextQuestion}>次の問題へ</button>
+        </>
+      );
       if (life === 1) {
         setMessage(
           <>
             <p>不正解。lifeは0です。</p>
-            <Link to="/result">結果発表へ</Link>
-            <p>閉じるを押さないで...</p>
+            <h1>今回のスコア:{score}</h1>
+            <Link to="/">タイトル画面に戻る</Link>
           </>
         );
       }
@@ -95,7 +100,7 @@ function Game() {
   }
 
   function nextQuestion() {
-    triggerPopup();
+    setPopUpVisible(false);
     //次の問題に進む処理
 
     let newId;
@@ -114,13 +119,12 @@ function Game() {
           {selectComp}
           <p>score : {score}</p>
           <p>life : {life}</p>
-          <QuizButton quizData={selectData} onAnswerSelect={handleAnswer} />
+          <QuizButton quizData={selectData} onAnswerSelect={HandleAnswer} />
 
           {isPopUpVisible && (
             <div className="answerPop">
               {/* ポップアップの中身 */}
               {message}
-              <button onClick={nextQuestion}>次の問題へ</button>
             </div>
           )}
         </>
